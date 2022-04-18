@@ -1,0 +1,20 @@
+header {
+  /* 	background-color: #FFFFFF; */
+    color: white;
+  /* 	padding: 16px; */
+    border-bottom: 1px solid #3a3a3c;
+    height: 50px;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: no-wrap;
+  
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  
