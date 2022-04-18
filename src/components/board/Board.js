@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Row from './Row'
 import './Board.css';
 
@@ -13,55 +13,68 @@ function Board() {
 		5: ['','','','',''],
 	});
 	const [gridPos, setGridPos] = useState({ row: 0, index: 0})
-	let posRef = useRef({ row: 0, index: 0})
 
 	const numRows = 6;
 	const arrSize = 5;
 	
-	function atBeginning() {
-		if (posRef.current.row === 0 && posRef.current.index === 0){
+	const atBeginning = useCallback(() => {
+		if (gridPos.row === 0 && gridPos.index === 0){
 			return true
 		} else {
 			return false
 		}
-	}
+	}, [gridPos])
 
-	function moveLeft() {
+	const moveLeft = useCallback(() => {
 		if (!atBeginning()) {
-			if (posRef.current.index > 0) {
-				posRef.current.index--;
+			if (gridPos.index > 0) {
+				setGridPos(prevState => {
+					return {
+						...prevState,
+						index: prevState.index - 1
+					}
+				});
 			} else {
-				posRef.current.row--;
-				posRef.current.index = arrSize-1;
+				setGridPos(prevState => {
+					return {
+						row: prevState.row - 1,
+						index: arrSize-1,
+					}
+				})
 			}					
 		}
-	}
+	}, [atBeginning, gridPos.index])
 
-	function moveRight() {
-		if (posRef.current.index < arrSize-1) {
-			posRef.current.index++;
-		} else if (posRef.current.row < numRows-1){ 
-			posRef.current.row++;
-			posRef.current.index = 0;
+	const moveRight = useCallback(() => {
+		if (gridPos.index < arrSize-1) {
+			setGridPos(prevState => {
+				return { 
+					...prevState,
+					index: prevState.index + 1
+				}
+			})
+		} else if (gridPos.row < numRows-1) { 
+			setGridPos(prevState => {
+				return {
+					row: prevState.row + 1,
+					index: 0
+				}
+			})
 		}
-	}
+	}, [gridPos])
 	
 	useEffect(() => {
     function handleKeyDown(e) {
 			e.preventDefault()
 			//a-z
 			if ((e.keyCode > 64 && e.keyCode < 91)) {
-				
-				// if (row[0][0] !== '') {
-				// 	moveRight();
-				// }
 
-				setRow(rows => {
-					const value = rows[posRef.current.row]
-					value[posRef.current.index] = e.key
+				setRow(prevState => {
+					const currentRow = prevState[gridPos.row]
+					currentRow[gridPos.index] = e.key
 					return ({
-						...rows,
-						[posRef.current.row]: value
+						...prevState,
+						[gridPos.row]: currentRow
 					})
 				})
 
@@ -71,12 +84,12 @@ function Board() {
 			//backspace
 			else if (e.keyCode === 8) {
 				
-				setRow(rows => {
-					const value = rows[posRef.current.row]
-					value[posRef.current.index] = ''
+				setRow(prevState => {
+					const value = prevState[gridPos.row]
+					value[gridPos.index] = ''
 					return ({
-						...rows,
-						[posRef.current.row]: value
+						...prevState,
+						[gridPos.row]: value
 					})
 				})
 				
@@ -99,25 +112,27 @@ function Board() {
     return function cleanup() {
       document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [row]);
+  }, [row, gridPos, moveLeft, moveRight]);
 
 	function handleClick(r, t) {
 		console.log('row: ', r)
 		console.log('tile: ', t)
-		posRef.current = {
-			row: r,
-			index: t,
-		}
+		setGridPos(prevState => {
+			return {
+				row: r,
+				index: t,
+			}
+		})
 	}
 	
 	let rows = [];
 	
-	for (let i = 0; i < 6; i++) {
+	for (let i = 0; i < numRows; i++) {
 		rows.push(<Row 
 			key={`row-${i}`} 
 			letters={row[i]} 
 			row={i} 
-			highlighted={posRef.current}
+			highlighted={gridPos}
 			handleClick={handleClick}>
 		</Row>)
 	}
@@ -130,10 +145,3 @@ function Board() {
 }
 
 export default Board;
-
-
-/*
-todo 
-	1) switch posRef to useState object, so that the highlighted shows
-		immediately
-*/
