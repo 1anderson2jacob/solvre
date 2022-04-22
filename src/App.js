@@ -1,8 +1,7 @@
 import './App.css';
 
 import Header from './components/header/Header';
-import Board from './components/board/Board';
-import Keyboard from './components/keyboard/Keyboard';
+import Game from './components/game/Game'
 
 
 function App() {
@@ -10,10 +9,7 @@ function App() {
 		<>
 			<Header></Header>
 			<main>
-				<div className="board-container">
-					<Board></Board>
-				</div>
-				<Keyboard></Keyboard>
+				<Game></Game>
 			</main>
 		</>
   );
