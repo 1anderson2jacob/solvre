@@ -8,7 +8,7 @@ function Row(props) {
 		tiles.push(
 		<Tile 
 			key={`tile-${i}`} 
-			letter={props.letters[i]} 
+			tileObject={props.tileObjects[i]}
 			handleClick={props.handleClick} 
 			highlighted={props.highlighted}
 			row={props.row} 
@@ -17,8 +17,10 @@ function Row(props) {
 	}
 	
 	return (
-		<div className="Row">
-			{tiles}
+		<div>
+			<div className="Row">
+				{tiles}
+			</div>
 		</div>
 	)
 }

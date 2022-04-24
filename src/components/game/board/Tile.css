@@ -8,11 +8,12 @@
 	font-weight: bold;
 	vertical-align: middle;
 	box-sizing: border-box;
-/* 	color: var(--tile-text-color); */
 	text-transform: uppercase;
 	user-select: none;
+}
 
-	border: 2px solid #3a3a3c;
+.highlighted {
+	border: 2px solid white !important;
 }
 
 .Tile::before {
@@ -21,6 +22,18 @@
 	padding-bottom: 100%;
 }
 
-.highlighted {
-	border: 2px solid white;
+.Tile[data-state='empty'] {
+	border: 2px solid #3a3a3c;
+}
+
+.Tile[data-state='absent'] {
+	background-color: #3a3a3c;
+}
+
+.Tile[data-state='present'] {
+	background-color: #c9b458;
+}
+
+.Tile[data-state='correct'] {
+	background-color: #538d4e;
 }
