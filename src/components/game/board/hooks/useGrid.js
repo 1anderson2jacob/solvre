@@ -5,7 +5,7 @@ todo:
     ✓ take this object as an arguement 
       { rows, columns}
       then generate the appropriate grid in [grid, setGrid] = useState
-    - pass the Board/Row component arrSize to use for creating tiles instead of the static # (5) it's currently using
+    ✓ pass the Board/Row component arrSize to use for creating tiles instead of the static # (5) it's currently using
 */
 
 const dataStateEnum = Object.freeze({
