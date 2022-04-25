@@ -8,7 +8,7 @@ function Board() {
 	const { grid, gridPos, setGridPos, 
 					moveUp, moveDown, moveLeft, 
 					moveRight, addLetter, removeLetter,
-					cycleDataState, numRows } = useGrid();
+					cycleDataState, numRows, numColumns } = useGrid({ numRows: 6, numColumns: 5 });
 
 	let gridRows = [];
 
@@ -75,6 +75,7 @@ function Board() {
 			tileObjects={grid[i]} 
 			row={i} 
 			highlighted={gridPos}
+			numColumns={numColumns}
 			handleClick={handleClick}>
 		</Row>)
 	}

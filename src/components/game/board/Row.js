@@ -4,14 +4,14 @@ import './Row.css';
 function Row(props) {
 	let tiles = [];
 	
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < props.numColumns; i++) {
 		tiles.push(
 		<Tile 
 			key={`tile-${i}`} 
 			tileObject={props.tileObjects[i]}
 			handleClick={props.handleClick} 
 			highlighted={props.highlighted}
-			row={props.row} 
+			row={props.row}
 			tile={i}>
 		</Tile>)
 	}
