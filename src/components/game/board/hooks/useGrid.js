@@ -1,11 +1,13 @@
 import { useState, useCallback } from 'react'
 /*
-eventually take this objet as an arguement 
-{ rows, columns}
-then generate the appropriate grid in [grid, setGrid] = useState
+todo: 
+    ✓ convert Grid from an object containing arrays of objects, to a 2 dimensional array of objects
+    ✓ take this object as an arguement 
+      { rows, columns}
+      then generate the appropriate grid in [grid, setGrid] = useState
+    - pass the Board/Row component arrSize to use for creating tiles instead of the static # (5) it's currently using
 */
-const arrSize = 5;
-const numRows = 6;
+
 const dataStateEnum = Object.freeze({
   empty: 'empty',
   absent: 'absent',
@@ -13,13 +15,14 @@ const dataStateEnum = Object.freeze({
   correct: 'correct'
 })
 
-let gridObj = {}
-for (let i = 0; i < numRows; i++) {
-  gridObj[i] = Array.from({length:arrSize},()=> ({ letter:'', dataState: dataStateEnum.empty }))
-}
-
-function useGrid() {
-  const [grid, setGrid] = useState(gridObj)
+function useGrid({ numRows, numColumns }) {
+  const [grid, setGrid] = useState(() => {
+    let gridArr = []
+    for (let i = 0; i < numRows; i++) {
+      gridArr[i] = Array.from({length:numColumns},()=> ({ letter:'', dataState: dataStateEnum.empty }))
+    }
+    return gridArr
+  })
   const [gridPos, setGridPos] = useState({ row: 0, index: 0})
 
   const moveUp = useCallback(() => {
@@ -42,7 +45,7 @@ function useGrid() {
         }
       })
     }
-  }, [gridPos.row])
+  }, [gridPos.row, numRows])
 
   const moveLeft = useCallback(() => {
     if (!(gridPos.row === 0 && gridPos.index === 0)) {
@@ -57,15 +60,15 @@ function useGrid() {
         setGridPos(prevState => {
           return {
             row: prevState.row - 1,
-            index: arrSize-1,
+            index: numColumns-1,
           }
         })
       }					
     }
-  }, [gridPos])
+  }, [gridPos, numColumns])
 
   const moveRight = useCallback(() => {
-    if (gridPos.index < arrSize-1) {
+    if (gridPos.index < numColumns-1) {
       setGridPos(prevState => {
         return { 
           ...prevState,
@@ -80,16 +83,13 @@ function useGrid() {
         }
       })
     }
-  }, [gridPos])
+  }, [gridPos, numRows, numColumns])
 
   const addLetter = useCallback((letter) => {
     setGrid(prevState => {
       const currentRow = prevState[gridPos.row]
       currentRow[gridPos.index] = { letter: letter, dataState: dataStateEnum.absent }
-      return ({
-        ...prevState,
-        [gridPos.row]: currentRow
-      })
+      return [...prevState, currentRow]
     })
 
     moveRight();		
@@ -99,10 +99,7 @@ function useGrid() {
     setGrid(prevState => {
       const currentRow = prevState[gridPos.row]
       currentRow[gridPos.index] = { letter: '', dataState: dataStateEnum.empty }
-      return ({
-        ...prevState,
-        [gridPos.row]: currentRow
-      })
+      return [...prevState, currentRow]
     })
     
     moveLeft();
@@ -113,12 +110,9 @@ function useGrid() {
       const currentRow = prevState[gridPos.row]
       let currentTile = prevState[gridPos.row][gridPos.index]
       currentRow[gridPos.index] = { ...currentTile, dataState: state}
-
-      return ({
-        ...prevState,
-        [gridPos.row]: currentRow
+      return [...prevState, currentRow]
       })
-    })
+    
   }, [gridPos])
 
   const cycleDataState = useCallback(() => {
@@ -137,7 +131,7 @@ function useGrid() {
   return {  grid, gridPos, setGridPos, 
             moveUp, moveDown, moveLeft, 
             moveRight, addLetter, removeLetter, 
-            cycleDataState, numRows  }
+            cycleDataState, numRows, numColumns }
 }
 
 export default useGrid
