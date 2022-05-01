@@ -17,3 +17,15 @@
 	flex-grow: 1;
 	overflow: hidden;
 }
+
+.submit-btn-container {
+	margin: 20px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.submit-btn {
+	width: 75px;
+	height: 50px;
+	border: 1px solid white;
+}
