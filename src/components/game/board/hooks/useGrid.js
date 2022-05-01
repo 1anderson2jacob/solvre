@@ -1,12 +1,4 @@
 import { useState, useCallback } from 'react'
-/*
-todo: 
-    ✓ convert Grid from an object containing arrays of objects, to a 2 dimensional array of objects
-    ✓ take this object as an arguement 
-      { rows, columns}
-      then generate the appropriate grid in [grid, setGrid] = useState
-    - pass the Board/Row component arrSize to use for creating tiles instead of the static # (5) it's currently using
-*/
 
 const dataStateEnum = Object.freeze({
   empty: 'empty',
@@ -21,6 +13,7 @@ function useGrid({ numRows, numColumns }) {
     for (let i = 0; i < numRows; i++) {
       gridArr[i] = Array.from({length:numColumns},()=> ({ letter:'', dataState: dataStateEnum.empty }))
     }
+
     return gridArr
   })
   const [gridPos, setGridPos] = useState({ row: 0, index: 0})
@@ -87,31 +80,31 @@ function useGrid({ numRows, numColumns }) {
 
   const addLetter = useCallback((letter) => {
     setGrid(prevState => {
-      const currentRow = prevState[gridPos.row]
-      currentRow[gridPos.index] = { letter: letter, dataState: dataStateEnum.absent }
-      return [...prevState, currentRow]
+      let newState = prevState.slice()
+      newState[gridPos.row][gridPos.index] = { letter: letter, dataState: dataStateEnum.absent }
+      return newState
     })
 
     moveRight();		
   }, [gridPos, moveRight])
 
-  const removeLetter = useCallback((letter) => {
+  const removeLetter = useCallback(() => {
     setGrid(prevState => {
-      const currentRow = prevState[gridPos.row]
-      currentRow[gridPos.index] = { letter: '', dataState: dataStateEnum.empty }
-      return [...prevState, currentRow]
+      let newState  = prevState.slice()
+      newState[gridPos.row][gridPos.index] = { letter: '', dataState: dataStateEnum.empty }
+      return newState
     })
-    
+
     moveLeft();
   }, [gridPos, moveLeft])
 
   const setDataState = useCallback((state) => {
     setGrid(prevState => {
-      const currentRow = prevState[gridPos.row]
-      let currentTile = prevState[gridPos.row][gridPos.index]
-      currentRow[gridPos.index] = { ...currentTile, dataState: state}
-      return [...prevState, currentRow]
-      })
+      let newState = prevState.slice()
+      let currentTile = newState[gridPos.row][gridPos.index]
+      newState[gridPos.row][gridPos.index] = { ...currentTile, dataState: state }
+      return newState
+    })
     
   }, [gridPos])
 
