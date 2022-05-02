@@ -1,18 +1,18 @@
 import Tile from './Tile';
 import './Row.css';
 
-function Row(props) {
+function Row({ numColumns = 0, rowNum = 0, tileObjects = [], handleClick, highlightedPos = { row: null, index: null } }) {
 	let tiles = [];
 	
-	for (let i = 0; i < props.numColumns; i++) {
+	for (let i = 0; i < numColumns; i++) {
 		tiles.push(
 		<Tile 
 			key={`tile-${i}`} 
-			tileObject={props.tileObjects[i]}
-			handleClick={props.handleClick} 
-			highlighted={props.highlighted}
-			row={props.row}
-			tile={i}>
+			tileObject={tileObjects[i]}
+			handleClick={handleClick} 
+			highlightedPos={highlightedPos}
+			rowNum={rowNum}
+			tileNum={i}>
 		</Tile>)
 	}
 	

@@ -1,11 +1,10 @@
 import './Key.css'
 
-function Key(props) {
-
+function Key({ letter = '', handleClick }) {
 	return (
 		<button 
-		onClick={() => props.handleClick(props.letter)}
-		className='Key'>{props.letter}</button>
+		onClick={() => handleClick(letter)}
+		className='Key'>{letter}</button>
 	)
 }
 
