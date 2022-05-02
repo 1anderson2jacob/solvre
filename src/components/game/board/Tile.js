@@ -1,16 +1,18 @@
 import './Tile.css'
-function Tile(props) {
-	const { row, index } = props.highlighted;
+function Tile({ highlightedPos, rowNum, tileNum, tileObject, handleClick }) {
+	const { row, index } = highlightedPos;
 
-	const cName = (row === props.row && index === props.tile) ? 'Tile highlighted' : 'Tile'
+	const cName = (row === rowNum && index === tileNum) ? 'Tile highlighted' : 'Tile'
 	return (
 		<div
 			className={cName}
-			data-state={props.tileObject.dataState}
-			onClick={() => props.handleClick(props.row, props.tile)}>
-			{props.tileObject.letter}
+			data-state={tileObject.dataState}
+			onClick={() => handleClick(rowNum, tileNum)}>
+			{tileObject.letter}
 		</div>
 	)
 }
 
 export default Tile;
+
+// row, index, tile, tileObject, handleClick

@@ -8,6 +8,15 @@ function usePackData(grid, numColumns) {
     wrongLetterPos: [],
   })
 
+  const updateIncompleteWord = useCallback((letter, index) => {
+    setData(prevState => {
+      let newState = prevState.incompleteWord
+      newState[index] = letter
+
+      return { ...prevState, incompleteWord: newState }
+    })
+  }, [])
+
   const updateExcludedLetters = useCallback(letter => {
     setData(prevState => {
       let newState = prevState.excludedLetters
@@ -23,15 +32,6 @@ function usePackData(grid, numColumns) {
       prevState.requiredLetters.includes(letter) === false && newState.push(letter)
 
       return { ...prevState, requiredLetters: newState}
-    })
-  }, [])
-
-  const updateIncompleteWord = useCallback((letter, index) => {
-    setData(prevState => {
-      let newState = prevState.incompleteWord
-      newState[index] = letter
-
-      return { ...prevState, incompleteWord: newState }
     })
   }, [])
 
@@ -65,6 +65,7 @@ function usePackData(grid, numColumns) {
       requiredLetters: [],
       wrongLetterPos: [],
     })
+    
     for (let i = 0; i < grid.length; i++) {
       for (let j = 0; j < grid[i].length; j++) {
         const tile = grid[i][j];
@@ -82,8 +83,7 @@ function usePackData(grid, numColumns) {
             updateIncompleteWord(tile.letter, j)
             updateRequiredLetters(tile.letter)
             break
-          default :
-            break
+          default : break
         } 
       }
     }

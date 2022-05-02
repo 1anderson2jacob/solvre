@@ -16,6 +16,43 @@ function Board() {
 
 	let gridRows = [];
 
+	const handleClick = (r, i) => {
+		if (gridPos.row === r && gridPos.index === i) {
+			cycleDataState()
+		} else {
+			setGridPos({
+				row: r, 
+				index: i
+			})
+		}
+	}
+	
+	const handleKeyboardClick = (letter) => {
+		if (letter === 'BACKSPACE') {
+			removeLetter()
+		} else if (letter === 'ENTER') {
+
+		} else {
+			addLetter(letter)
+		}
+	}
+
+	const handleFetch = useCallback(async (e) => {
+		e.preventDefault();
+
+		const options = {
+			method: 'post',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(packedData)
+		}
+		await fetchCallback(options).then(res => {
+			console.log(res)
+		})
+	}, [packedData, fetchCallback])
+
 	useEffect(() => {
 
     function handleKeyDown(e) {
@@ -52,50 +89,13 @@ function Board() {
     }
   }, [addLetter, removeLetter, moveLeft, moveRight, moveUp, moveDown]);
 
-	function handleClick(r, i) {
-		if (gridPos.row === r && gridPos.index === i) {
-			cycleDataState()
-		} else {
-			setGridPos({
-				row: r, 
-				index: i
-			})
-		}
-	}
-	
-	function handleKeyboardClick(letter) {
-		if (letter === 'BACKSPACE') {
-			removeLetter()
-		} else if (letter === 'ENTER') {
-
-		} else {
-			addLetter(letter)
-		}
-	}
-
-	const handleFetch = useCallback(async (e) => {
-		e.preventDefault();
-
-		const options = {
-			method: 'post',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(packedData)
-		}
-		await fetchCallback(options).then(res => {
-			console.log(res)
-		})
-	}, [packedData, fetchCallback])
-
 	for (let i = 0; i < numRows; i++) {
 		gridRows.push(
 		<Row 
 			key={`row-${i}`} 
 			tileObjects={grid[i]} 
-			row={i} 
-			highlighted={gridPos}
+			rowNum={i} 
+			highlightedPos={gridPos}
 			numColumns={numColumns}
 			handleClick={handleClick}>
 		</Row>)
