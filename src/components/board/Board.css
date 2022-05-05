@@ -16,9 +16,6 @@
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
-.keyboard-container {
-	height: var(--keyboard-height);
-}
 .submit-btn-container {
 	margin: 20px 0;
 	display: flex;

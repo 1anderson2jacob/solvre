@@ -1,7 +1,7 @@
-import Key from './Key'
-import './Row.css'
+import Key from '../Key/Key'
+import './KeyRow.css'
 
-function Row({ letters = [], hasInput,  handleClick }) {
+function KeyRow({ letters = [], hasInput,  handleClick }) {
   const keys = letters.map((letter, index) => {
     return (
       <Key 
@@ -20,4 +20,4 @@ function Row({ letters = [], hasInput,  handleClick }) {
   )
 }
 
-export default Row;
+export default KeyRow;
