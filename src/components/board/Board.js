@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react'
-import Row from './Row'
-import Keyboard from './keyboard/Keyboard.js'
+import Row from './Row/Row'
+import Keyboard from './Keyboard/Keyboard'
 import './Board.css';
 import useGrid from './hooks/useGrid'
 import useFetch from './hooks/useFetch'
@@ -37,9 +37,10 @@ function Board() {
 	}, [packedData, fetchCallback])
 	
 	const handleKeyboardClick = (e, letter) => {
+		// on screen keyboard
 		e.preventDefault()
 
-		if (letter === 'BACKSPACE') {
+		if (letter === 'BACK') {
 			removeLetter()
 		} else if (letter === 'SUBMIT') {
 			handleFetch(e)
@@ -102,16 +103,12 @@ function Board() {
 					{gridRows}
 				</div>
 			</div>
-			<div className="keyboard-container">
-				<Keyboard hasInput={hasInput} handleClick={handleKeyboardClick}></Keyboard>
-			</div>
-
+			<Keyboard hasInput={hasInput} handleClick={handleKeyboardClick}></Keyboard>
 			{ loading && <p>{loading}</p> }
 			{ data && <ul>{data.map((obj) => {
 				return <li key={obj.id}>{obj.word}</li>
 			})}</ul> }
 			{ error && <p>{error}</p>}
-
 		</>
 	)
 }

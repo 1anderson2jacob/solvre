@@ -1,4 +1,4 @@
-import Row from './Row'
+import KeyRow from './KeyRow/KeyRow'
 import './Keyboard.css'
 
 function Keyboard({ handleClick, hasInput }) {
@@ -8,10 +8,12 @@ function Keyboard({ handleClick, hasInput }) {
 	const row3 = ['SUBMIT','Z','X','C','V','B','N','M', 'BACK']
 
 	return (
-		<div className="Keyboard">
-			<Row key={row1} letters={row1} hasInput={hasInput} andleClick={handleClick}></Row>
-			<Row key={row2} letters={row2} hasInput={hasInput} handleClick={handleClick}></Row>
-			<Row key={row3} letters={row3} hasInput={hasInput} handleClick={handleClick}></Row>
+		<div className="keyboard-container">
+			<div className="Keyboard">
+				<KeyRow key={row1} letters={row1} hasInput={hasInput} andleClick={handleClick}></KeyRow>
+				<KeyRow key={row2} letters={row2} hasInput={hasInput} handleClick={handleClick}></KeyRow>
+				<KeyRow key={row3} letters={row3} hasInput={hasInput} handleClick={handleClick}></KeyRow>
+			</div>
 		</div>
 	)
 }

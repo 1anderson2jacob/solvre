@@ -1,4 +1,4 @@
-import Tile from './Tile';
+import Tile from '../Tile/Tile';
 import './Row.css';
 
 function Row({ numColumns = 0, rowNum = 0, tileObjects = [], handleClick, 

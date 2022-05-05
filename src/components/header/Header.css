@@ -1,12 +1,12 @@
 header {
-    color: white;
+    color: var(--color-tone-1);
     border-bottom: 1px solid #3a3a3c;
     height: var(--header-height);
   
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: no-wrap;
   
     font: 16px 
@@ -14,9 +14,7 @@ header {
 h1 {
   margin: 0;
 }
-  
 .title {
-  /* font-family: 'nyt-karnakcondensed'; */
   font-weight: 700;
   font-size: 37px;
   line-height: 100%;
@@ -26,4 +24,6 @@ h1 {
   right: 0;
   pointer-events: none;
 }
-  
+.placeholder {
+  width: 24px;
+}
