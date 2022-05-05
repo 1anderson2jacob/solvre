@@ -4,7 +4,7 @@ function Header() {
 
 	return (
 		<header>
-			<h1>Header</h1>
+			<h1 className="title">Solvre</h1>
 		</header>
 	)
 }

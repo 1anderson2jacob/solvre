@@ -1,7 +1,8 @@
 import Tile from './Tile';
 import './Row.css';
 
-function Row({ numColumns = 0, rowNum = 0, tileObjects = [], handleClick, highlightedPos = { row: null, index: null } }) {
+function Row({ numColumns = 0, rowNum = 0, tileObjects = [], handleClick, 
+	highlightedPos = { row: null, index: null } }) {
 	let tiles = [];
 	
 	for (let i = 0; i < numColumns; i++) {
@@ -9,7 +10,7 @@ function Row({ numColumns = 0, rowNum = 0, tileObjects = [], handleClick, highli
 		<Tile 
 			key={`tile-${i}`} 
 			tileObject={tileObjects[i]}
-			handleClick={handleClick} 
+			handleClick={handleClick}
 			highlightedPos={highlightedPos}
 			rowNum={rowNum}
 			tileNum={i}>

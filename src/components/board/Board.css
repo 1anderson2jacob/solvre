@@ -6,18 +6,19 @@
 	grid-gap: 5px;
 	padding: 10px;
 	box-sizing: border-box;
-	
-/* 	border: 1px solid white; */
 }
-
 .board-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-grow: 1;
 	overflow: hidden;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
-
+.keyboard-container {
+	height: var(--keyboard-height);
+}
 .submit-btn-container {
 	margin: 20px 0;
 	display: flex;

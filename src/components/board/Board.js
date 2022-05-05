@@ -10,35 +10,18 @@ function Board() {
 	const { grid, gridPos, setGridPos, 
 					moveUp, moveDown, moveLeft, 
 					moveRight, addLetter, removeLetter,
-					cycleDataState, numRows, numColumns } = useGrid({ numRows: 6, numColumns: 5 });
+					cycleDataState, hasInput, numRows, numColumns } = useGrid({ numRows: 6, numColumns: 5 });
 	const { data, loading, error, fetchCallback } = useFetch('http://localhost:8080/')
 	const { data: packedData } = usePackData(grid, numColumns)
 
 	let gridRows = [];
 
 	const handleClick = (r, i) => {
-		if (gridPos.row === r && gridPos.index === i) {
-			cycleDataState()
-		} else {
-			setGridPos({
-				row: r, 
-				index: i
-			})
-		}
-	}
-	
-	const handleKeyboardClick = (letter) => {
-		if (letter === 'BACKSPACE') {
-			removeLetter()
-		} else if (letter === 'ENTER') {
-
-		} else {
-			addLetter(letter)
-		}
+		(gridPos.row === r && gridPos.index === i) ? cycleDataState() : setGridPos({ row: r, index: i })
 	}
 
 	const handleFetch = useCallback(async (e) => {
-		e.preventDefault();
+		e.preventDefault()
 
 		const options = {
 			method: 'post',
@@ -52,9 +35,20 @@ function Board() {
 			console.log(res)
 		})
 	}, [packedData, fetchCallback])
+	
+	const handleKeyboardClick = (e, letter) => {
+		e.preventDefault()
+
+		if (letter === 'BACKSPACE') {
+			removeLetter()
+		} else if (letter === 'SUBMIT') {
+			handleFetch(e)
+		} else {
+			addLetter(letter)
+		}
+	}
 
 	useEffect(() => {
-
     function handleKeyDown(e) {
 			e.preventDefault()
 			//a-z
@@ -102,17 +96,14 @@ function Board() {
 	}
 	
 	return (
-		<div>
+		<>
 			<div className="board-container">
 				<div className="Board">
 					{gridRows}
 				</div>
 			</div>
 			<div className="keyboard-container">
-				<Keyboard handleClick={handleKeyboardClick}></Keyboard>
-			</div>
-			<div className="submit-btn-container">
-				<button onClick={handleFetch}className="submit-btn">Submit</button>
+				<Keyboard hasInput={hasInput} handleClick={handleKeyboardClick}></Keyboard>
 			</div>
 
 			{ loading && <p>{loading}</p> }
@@ -121,7 +112,7 @@ function Board() {
 			})}</ul> }
 			{ error && <p>{error}</p>}
 
-		</div>
+		</>
 	)
 }
 
