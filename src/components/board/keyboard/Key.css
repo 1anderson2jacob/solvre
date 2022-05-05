@@ -1,0 +1,45 @@
+.Key {
+  font-weight: bold;
+  background-color: var(--key-color);
+  border: 0;
+  padding: 0;
+  margin: 0 6px 0 0;
+  height: 58px;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.one-and-a-half {
+  flex: 1.5;
+  font-size: 12px;
+}
+.half {
+  flex: 0.5;
+  visibility: hidden;
+}
+.backspace {
+  /* SVG */
+}
+.animated-submit {
+  background: linear-gradient(90deg, white 50%, transparent 50%), 
+                linear-gradient(90deg, white 50%, transparent 50%), 
+                linear-gradient(0deg, white 50%, transparent 50%), 
+                linear-gradient(0deg, white 50%, transparent 50%);
+                background-color: var(--key-color);
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  background-size: 12px 2px, 12px 2px, 2px 12px, 2px 12px;
+  background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0px;
+  border-radius: 4px;
+  /* padding: 10px; */
+  animation: dash 10s linear infinite;
+}
+@keyframes dash {
+  to {
+      background-position: 100% 0%, 0% 100%, 0% 0%, 100% 100%;
+  }
+}

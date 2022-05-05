@@ -121,10 +121,22 @@ function useGrid({ numRows, numColumns }) {
     }
   }, [grid, gridPos, setDataState])
 
+  const hasInput = useCallback(() => {
+    let inputBool = false
+    for(let i = 0; i < numRows; i++) {
+      for(let j = 0; j < numColumns; j++) {
+        if (grid[i][j].letter !== '') {
+          inputBool = true
+        }
+      }
+    }
+    return inputBool
+  }, [grid, numColumns, numRows])
+
   return {  grid, gridPos, setGridPos, 
             moveUp, moveDown, moveLeft, 
             moveRight, addLetter, removeLetter, 
-            cycleDataState, numRows, numColumns }
+            cycleDataState, hasInput, numRows, numColumns }
 }
 
 export default useGrid

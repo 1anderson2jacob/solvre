@@ -11,29 +11,23 @@
 	text-transform: uppercase;
 	user-select: none;
 }
-
 .highlighted {
 	border: 2px solid white !important;
 }
-
 .Tile::before {
 	content: '';
 	display: inline-block;
 	padding-bottom: 100%;
 }
-
 .Tile[data-state='empty'] {
 	border: 2px solid #3a3a3c;
 }
-
 .Tile[data-state='absent'] {
 	background-color: #3a3a3c;
 }
-
 .Tile[data-state='present'] {
 	background-color: #c9b458;
 }
-
 .Tile[data-state='correct'] {
 	background-color: #538d4e;
 }

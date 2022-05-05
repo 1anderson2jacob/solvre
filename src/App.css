@@ -1,17 +1,18 @@
-
+:root {
+	--header-height: 50px;
+	--game-max-width: 500px;
+	--keyboard-height: 200px;
+	--key-color: #818384;
+}
 html {
 	background-color: #121213;
 }
 main {
-/*   text-align: center;
-  vertical-align: center;
-  line-height: 100vh; */
 	color: white;
-/* 	background-color: black; */
 	width: 100%;
-	max-width: 500px;
+	max-width: var(--game-max-width);
 	margin: 0 auto;
-	height: calc(100% - 50px);
+	height: calc(100% - var(--header-height));
 	display: flex;
 	flex-direction: column;
 }
