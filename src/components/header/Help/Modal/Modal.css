@@ -15,7 +15,6 @@
   flex-grow: 1;
   overflow: hidden;
 }
-
 .Modal .content { 
   position: relative;
   border-radius: 8px;
@@ -29,11 +28,9 @@
   box-sizing: border-box;
   animation: SlideIn 200ms;
 }
-
 .Modal .content section {
   display: block
 }
-
 .CloseBtnSvg {
   cursor: pointer;
   position: absolute;

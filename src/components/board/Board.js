@@ -1,6 +1,7 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import Row from './Row/Row'
 import Keyboard from './Keyboard/Keyboard'
+import ResultsList from './ResultsList/ResultsList'
 import './Board.css';
 import useGrid from './hooks/useGrid'
 import useFetch from './hooks/useFetch'
@@ -13,6 +14,7 @@ function Board() {
 					cycleDataState, hasInput, numRows, numColumns } = useGrid({ numRows: 6, numColumns: 5 });
 	const { data, loading, error, fetchCallback } = useFetch('http://localhost:8080/')
 	const { data: packedData } = usePackData(grid, numColumns)
+	const fieldRef = useRef()
 
 	let gridRows = [];
 
@@ -34,6 +36,8 @@ function Board() {
 		await fetchCallback(options).then(res => {
 			console.log(res)
 		})
+
+		fieldRef.current.scrollIntoView({ behavior: 'smooth' })
 	}, [packedData, fetchCallback])
 	
 	const handleKeyboardClick = (e, letter) => {
@@ -82,7 +86,7 @@ function Board() {
     return function cleanup() {
       document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [addLetter, removeLetter, moveLeft, moveRight, moveUp, moveDown]);
+  }, [addLetter, removeLetter, moveLeft, moveRight, moveUp, moveDown, data, loading, error]);
 
 	for (let i = 0; i < numRows; i++) {
 		gridRows.push(
@@ -104,11 +108,7 @@ function Board() {
 				</div>
 			</div>
 			<Keyboard hasInput={hasInput} handleClick={handleKeyboardClick}></Keyboard>
-			{ loading && <p>{loading}</p> }
-			{ data && <ul>{data.map((obj) => {
-				return <li key={obj.id}>{obj.word}</li>
-			})}</ul> }
-			{ error && <p>{error}</p>}
+			<ResultsList ref={fieldRef} data={data} loading={loading} error={error}></ResultsList>
 		</>
 	)
 }

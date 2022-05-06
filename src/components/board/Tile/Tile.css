@@ -32,3 +32,10 @@
 .Tile[data-state='correct'] {
 	background-color: var(--color-correct);
 }
+
+@media (max-height: 600px) {
+	.Tile {
+		font-size: 1em;
+		line-height: 1em;
+	}
+}
