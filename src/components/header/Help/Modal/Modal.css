@@ -1,0 +1,62 @@
+.Modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--opacity-50);
+  z-index: 3000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.Modal .content { 
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid #1a1a1b;
+  background-color: #121213;
+  color: var(--color-tone-1);
+  width: 90%;
+  max-width: var(--game-max-width);
+  max-height: 90%;
+  padding: 16px;
+  box-sizing: border-box;
+  animation: SlideIn 200ms;
+}
+
+.Modal .content section {
+  display: block
+}
+
+.CloseBtnSvg {
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.instructions a:link {
+  text-decoration: none;
+}
+.instructions a {
+  color: var(--color-present);
+}
+.instructions p {
+  font-size: var(--modal-font-size);
+}
+@keyframes SlideIn {
+  0% { 
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
