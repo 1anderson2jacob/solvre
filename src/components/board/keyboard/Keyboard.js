@@ -10,7 +10,7 @@ function Keyboard({ handleClick, hasInput }) {
 	return (
 		<div className="keyboard-container">
 			<div className="Keyboard">
-				<KeyRow key={row1} letters={row1} hasInput={hasInput} andleClick={handleClick}></KeyRow>
+				<KeyRow key={row1} letters={row1} hasInput={hasInput} handleClick={handleClick}></KeyRow>
 				<KeyRow key={row2} letters={row2} hasInput={hasInput} handleClick={handleClick}></KeyRow>
 				<KeyRow key={row3} letters={row3} hasInput={hasInput} handleClick={handleClick}></KeyRow>
 			</div>

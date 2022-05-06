@@ -4,6 +4,11 @@
 	--keyboard-height: 200px;
 	--key-color: #818384;
 	--color-tone-1: #ffffff;
+	--color-correct: #538d4e;
+	--color-present: #b59f3b;
+	--color-absent: #3a3a3c;
+	--modal-font-size: 15px;
+	--opacity-50:rgba(0, 0, 0, 0.5);
 }
 html {
 	background-color: #121213;
