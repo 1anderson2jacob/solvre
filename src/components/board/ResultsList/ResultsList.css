@@ -1,0 +1,15 @@
+.ResultsList {
+  padding: 10px;
+  border: 1px solid #3b3b3e;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  max-width: var(--game-max-width);
+}
+.ResultsList:empty {
+  display: none;
+}
+.ResultsList ul {
+	columns: 3;
+  width: 80%;
+  margin: auto;
+}
