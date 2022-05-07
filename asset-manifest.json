@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/wordle-solver-frontend/static/css/main.f2b44b74.css",
-    "main.js": "/wordle-solver-frontend/static/js/main.b04c8e96.js",
+    "main.js": "/wordle-solver-frontend/static/js/main.8ce106aa.js",
     "static/js/787.c2c78814.chunk.js": "/wordle-solver-frontend/static/js/787.c2c78814.chunk.js",
     "index.html": "/wordle-solver-frontend/index.html",
     "static/media/HelpSvg.svg": "/wordle-solver-frontend/static/media/HelpSvg.88d6f121c72fb2e5e0291b526e9643b6.svg",
     "static/media/CloseBtnSvg.svg": "/wordle-solver-frontend/static/media/CloseBtnSvg.2c3f589119ac686a1c881fdf8925dfd0.svg",
     "main.f2b44b74.css.map": "/wordle-solver-frontend/static/css/main.f2b44b74.css.map",
-    "main.b04c8e96.js.map": "/wordle-solver-frontend/static/js/main.b04c8e96.js.map",
+    "main.8ce106aa.js.map": "/wordle-solver-frontend/static/js/main.8ce106aa.js.map",
     "787.c2c78814.chunk.js.map": "/wordle-solver-frontend/static/js/787.c2c78814.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2b44b74.css",
-    "static/js/main.b04c8e96.js"
+    "static/js/main.8ce106aa.js"
   ]
 }
