@@ -12,7 +12,7 @@ function Board() {
 					moveUp, moveDown, moveLeft, 
 					moveRight, addLetter, removeLetter,
 					cycleDataState, hasInput, numRows, numColumns } = useGrid({ numRows: 6, numColumns: 5 });
-	const { data, loading, error, fetchCallback } = useFetch('http://localhost:8080/')
+	const { data, loading, error, fetchCallback } = useFetch('https://solvre-backend.herokuapp.com/')
 	const { data: packedData } = usePackData(grid, numColumns)
 	const fieldRef = useRef()
 
