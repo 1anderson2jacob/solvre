@@ -32,3 +32,10 @@
 		height: 360px;
 	}
 }
+
+@media (max-height: 600px) {
+	.Board {
+		width: 305px;
+		height: 360px;
+	}
+}

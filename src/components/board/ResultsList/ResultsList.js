@@ -6,7 +6,7 @@ const  ResultsList = forwardRef((props, ref) => {
 
   return (
     <div className="ResultsList" ref={ref}>
-      { loading && <p>{loading}</p> }
+      { loading && <p>loading...</p> }
 			{ data &&
 				<ul>{data.map(obj => {
 				return <li key={obj.id}>{obj.word}</li>

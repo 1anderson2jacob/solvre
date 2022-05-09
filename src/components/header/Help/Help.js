@@ -1,7 +1,6 @@
-import React from 'react';
 import './Help.css';
 import { ReactComponent as HelpSvg } from './HelpSvg.svg'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from './Modal/Modal'
 
 function Help() {
@@ -11,6 +10,15 @@ function Help() {
     e.preventDefault()
     setIsOpen(true)
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'visible'
+    }
+  }, [isOpen])
+
   return (
     <>
       <HelpSvg className="HelpSvg" onClick={clickHandler}></HelpSvg>
