@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/wordle-solver-frontend/static/css/main.f2b44b74.css",
-    "main.js": "/wordle-solver-frontend/static/js/main.8ce106aa.js",
-    "static/js/787.c2c78814.chunk.js": "/wordle-solver-frontend/static/js/787.c2c78814.chunk.js",
-    "index.html": "/wordle-solver-frontend/index.html",
-    "static/media/HelpSvg.svg": "/wordle-solver-frontend/static/media/HelpSvg.88d6f121c72fb2e5e0291b526e9643b6.svg",
-    "static/media/CloseBtnSvg.svg": "/wordle-solver-frontend/static/media/CloseBtnSvg.2c3f589119ac686a1c881fdf8925dfd0.svg",
-    "main.f2b44b74.css.map": "/wordle-solver-frontend/static/css/main.f2b44b74.css.map",
-    "main.8ce106aa.js.map": "/wordle-solver-frontend/static/js/main.8ce106aa.js.map",
-    "787.c2c78814.chunk.js.map": "/wordle-solver-frontend/static/js/787.c2c78814.chunk.js.map"
+    "main.css": "/solvre/static/css/main.3e2e2e01.css",
+    "main.js": "/solvre/static/js/main.21836298.js",
+    "static/js/787.c2c78814.chunk.js": "/solvre/static/js/787.c2c78814.chunk.js",
+    "index.html": "/solvre/index.html",
+    "static/media/HelpSvg.svg": "/solvre/static/media/HelpSvg.88d6f121c72fb2e5e0291b526e9643b6.svg",
+    "static/media/CloseBtnSvg.svg": "/solvre/static/media/CloseBtnSvg.2c3f589119ac686a1c881fdf8925dfd0.svg",
+    "main.3e2e2e01.css.map": "/solvre/static/css/main.3e2e2e01.css.map",
+    "main.21836298.js.map": "/solvre/static/js/main.21836298.js.map",
+    "787.c2c78814.chunk.js.map": "/solvre/static/js/787.c2c78814.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2b44b74.css",
-    "static/js/main.8ce106aa.js"
+    "static/css/main.3e2e2e01.css",
+    "static/js/main.21836298.js"
   ]
 }
