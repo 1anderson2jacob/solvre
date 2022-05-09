@@ -3,6 +3,8 @@
   border: 1px solid #3b3b3e;
   margin-top: 10px;
   margin-bottom: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
   max-width: var(--game-max-width);
 }
 .ResultsList:empty {

@@ -1,19 +1,12 @@
 .Examples h1 {
   margin-bottom: 10px;
 }
-
 .Examples .Row {
   width: 80%;
 }
-
 .Examples ul li {
   font-size: var(--modal-font-size);
-  /* display: inline; */
 }
-/* .Examples ul {
-  display: inline
-} */
-
 .Examples ul li div {
   width: 20px;
   height: 20px;
@@ -22,15 +15,12 @@
   display: inline-block;
   border: 1px solid rgb(88, 88, 88)
 }
-
 .Examples ul li div[data-state='absent'] {
   background-color: var(--color-absent);
 }
-
 .Examples ul li div[data-state='present'] {
   background-color: var(--color-present);
 }
-
 .Examples ul li div[data-state='correct'] {
   background-color: var(--color-correct);
 }
